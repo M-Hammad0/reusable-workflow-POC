@@ -9,9 +9,6 @@ on:
 jobs:
   activate-github-runner:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
     outputs:
       expose_var: "test-var"
     steps:
