@@ -6,6 +6,11 @@ on:
       expose_var:
         description: "test var"
         value: ${{ jobs.activate-github-runner.outputs.expose_var }}
+    inputs:
+      passed-var:
+        type: string
+        required: true
+        
 jobs:
   activate-github-runner:
     runs-on: ubuntu-latest
@@ -13,4 +18,4 @@ jobs:
       expose_var: "test-var"
     steps:
       - name: TEST 
-        run : echo "Hello world!"
+        run : echo "Hello world! ${{inputs.passed-var}}"
