@@ -1,0 +1,19 @@
+name: reuseable workflow
+on:
+  workflow_dispatch:
+  workflow_call:
+    outputs:
+      expose_var:
+        description: "test var"
+        value: ${{ jobs.activate-github-runner.outputs.expose_var }}
+jobs:
+  activate-github-runner:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    outputs:
+      expose_var: "test-var"
+    steps:
+      - name: TEST 
+        run : echo "Hello world!"
